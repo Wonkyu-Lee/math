@@ -25,5 +25,22 @@ if (MATH_DEP_EIGEN)
     set(MATH_DEPENDENCIES ${MATH_DEPENDENCIES} dep_eigen)
 endif()
 
+if (MATH_DEP_GLM)
+    ExternalProject_Add(
+        dep_glm
+        GIT_REPOSITORY "https://github.com/g-truc/glm.git"
+        GIT_TAG "master"
+        UPDATE_COMMAND ""
+        PATCH_COMMAND ""
+        SOURCE_DIR "${MATH_DEP_SOURCE_DIR}/glm"
+        CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${MATH_DEP_INSTALL_DIR}
+        -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+        -DCMAKE_CXX_FLAGS=${CMAKE_CXX_FLAGS}
+        -DCMAKE_VERBOSE_MAKEFILE={CMAKE_VERBOSE_MAKEFILE}
+        TEST_COMMAND ""
+    )
+    set(MATH_DEPENDENCIES ${MATH_DEPENDENCIES} dep_glm)
+endif()
+
 include_directories(${MATH_DEP_INSTALL_DIR}/include)
 link_directories(${MATH_DEP_INSTALL_DIR}/lib)

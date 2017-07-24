@@ -8,5 +8,6 @@ add_executable(math ${SOURCE_FILES})
 
 set(MATH_PLATFORM macOS)
 set(MATH_DEP_EIGEN ON)
+set(MATH_DEP_GLM ON)
 include(cmake/dependencies.cmake)
 add_dependencies(math ${MATH_DEPENDENCIES})
